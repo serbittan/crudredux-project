@@ -1,7 +1,10 @@
 import { 
     ADD_PRODUCT,
     ADD_PRODUCT_SUCCESS,
-    ADD_PRODUCT_ERROR
+    ADD_PRODUCT_ERROR,
+    GET_PRODUCTS,
+    GET_PRODUCTS_SUCCESS,
+    GET_PRODUCTS_ERROR
 } from '../types'
 
 // Cada reducer tiene su propio state.
@@ -31,6 +34,26 @@ const productsReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
                 loading: false
+            }
+
+        case GET_PRODUCTS:
+            return {
+                ...state,
+                loading: action.payload
+            }
+
+        case GET_PRODUCTS_SUCCESS:
+            return {
+                ...state,
+                loading: false, 
+                error: null,
+                products: action.payload
+            }
+
+        case GET_PRODUCTS_ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         default:
             return state

@@ -2,17 +2,22 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Actions de Redux.
-import { createNewProductActions } from '../actions/productActions'
+import { createNewProductActions } from '../actions/productAction'
 
 
 
-const NewProduct = () => {
+const NewProduct = ({ history }) => {
     // State propio del componente.
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
 
     // Utilizar useDispatch para crear una función.
     const dispatch = useDispatch()
+
+    // Acceder al state del store.
+    const charging = useSelector( state => state.products.loading)
+    const error = useSelector(state => state.products.error)
+
 
     // mandar llamar el action del productActions
     const addProduct =  (product) => dispatch( createNewProductActions(product) )
@@ -31,6 +36,9 @@ const NewProduct = () => {
             name,
             price
         })
+
+        // redireccionar.
+        history.push('/')
     }
 
 
@@ -75,6 +83,9 @@ const NewProduct = () => {
                             >Add</button>
                             
                         </form>
+
+                        {charging && <p>Loading...</p>}
+                        {error && <p className="alert alert-danger p2 mt-4 text-center">There was a mistake!</p>}
                     </div>
                 </div>
             </div>

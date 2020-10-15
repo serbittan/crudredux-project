@@ -3,5 +3,5 @@ import { combineReducers } from 'redux' // Función para manejar los reducers en
 import productsReducer from './productsReducer'
 
 export default combineReducers({
-    products: productsReducer
+    products: productsReducer          // products sería el state del productsReducer.
 })

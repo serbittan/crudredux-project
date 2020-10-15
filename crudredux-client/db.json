@@ -2,27 +2,27 @@
   "productos": [
     {
       "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
+      "name": "Jugo de Zanahoria",
+      "price": "31111"
     },
     {
       "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
+      "name": "Jugo de Naranja",
+      "price": "1"
     },
     {
-      "nombre": "Jugo de Naranja",
-      "precio": "300",
+      "name": "Jugo de Naranja",
+      "price": "300",
       "id": 3
     },
     {
-      "nombre": "Rib Eye 800g",
-      "precio": "200",
+      "name": "Rib Eye 800g",
+      "price": "200",
       "id": 4
     },
     {
-      "nombre": "Jugo de Fresa",
-      "precio": "200",
+      "name": "Jugo de Fresa",
+      "price": "200",
       "id": 5
     },
     {
@@ -34,6 +34,61 @@
       "name": "sergi",
       "price": 33,
       "id": 7
+    },
+    {
+      "name": "sergi",
+      "price": 1,
+      "id": 8
+    },
+    {
+      "name": "Sergi Bittanlux",
+      "price": 2,
+      "id": 9
+    },
+    {
+      "name": "Ramoneta",
+      "price": 2,
+      "id": 10
+    },
+    {
+      "name": "Elegir Plataforma lanzamiento",
+      "price": 4,
+      "id": 11
+    },
+    {
+      "name": "pepe",
+      "price": 2,
+      "id": 12
+    },
+    {
+      "name": "pepe",
+      "price": 2,
+      "id": 13
+    },
+    {
+      "name": "Ramon",
+      "price": 22,
+      "id": 14
+    },
+    {
+      "name": "Ramoneta",
+      "price": 3,
+      "id": 15
+    },
+    {
+      "name": "Elegir Plataforma lanzamiento",
+      "price": 33,
+      "id": 16
+    },
+    {
+      "name": "Ramoneta",
+      "price": 33,
+      "id": 17
+    },
+    {
+      "name": "Elegir Plataforma lanzamiento4",
+      "price": 4,
+      "id": 18
     }
   ]
 }

@@ -11,7 +11,7 @@ const Products = () => {
     // Utilizar useDispatch para crear una function.
     const dispatch = useDispatch()
 
-    // Mandar llamar al actions del productActions.
+    // Mandar llamar al actions del productActions. (esto podría añadirlo dentro del useEffect)
     const getProducts = () => dispatch(getProductsActions())
 
     // Acceder al state del store.

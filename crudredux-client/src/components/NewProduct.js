@@ -2,35 +2,46 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Actions de Redux.
-import { createNewProductActions } from '../actions/productAction'
-
+import { createNewProductAction } from '../actions/productAction'
+import { showAlertAction, hideAlertAction } from '../actions/alertAction'
 
 
 const NewProduct = ({ history }) => {
-    // State propio del componente.
+    // State local propio del componente.
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
 
     // Utilizar useDispatch para crear una función.
     const dispatch = useDispatch()
 
-    // Acceder al state del store.
+    // Acceder al state del store.(products o alert)
     const charging = useSelector( state => state.products.loading)
     const error = useSelector(state => state.products.error)
-
+    const alert = useSelector(state => state.alert.alert)
 
     // mandar llamar el action del productActions
-    const addProduct =  (product) => dispatch( createNewProductActions(product) )
+    const addProduct =  product => dispatch( createNewProductAction(product) )
 
     // cuando user hace submit
     const submitNewProduct = event => {
         event.preventDefault()
 
-        // validar campos
-        if (!name.trim() || price <= 0) {
+        // validar campos.
+        if (!name.trim() || price <= 0) {  // trim no es un método de los números.
+
+            // creamos un objeto para alertas.
+            const alert = {
+                msg: 'All fields are require',
+                classes: 'alert alert-danger text-center text-uppercase p3'
+            }
+            // llamar al actions.
+            dispatch(showAlertAction(alert))
+
             return
         }
-        // error
+        // si no hay error.
+        dispatch(hideAlertAction())
+
         // crear new product
         addProduct({
             name,
@@ -51,6 +62,8 @@ const NewProduct = ({ history }) => {
                             Add New Product
                         </h2>
 
+                        {alert && <p className={alert.classes}>{alert.msg}</p>}
+                        
                         <form
                             onSubmit={submitNewProduct}
                         >
@@ -63,6 +76,7 @@ const NewProduct = ({ history }) => {
                                     name="name"
                                     value={name}
                                     onChange={ event => setName(event.target.value)}
+                                    autoFocus
                                 />
                             </div>
 

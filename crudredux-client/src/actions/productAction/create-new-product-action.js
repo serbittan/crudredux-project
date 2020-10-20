@@ -9,7 +9,7 @@ import { addProductDb } from '../../logic'
 
 
 // Crear nuevos productos.
-export default function createNewProductActions(product) {
+export default function createNewProductAction(product) {
     return async (dispatch) => {
         dispatch(addProduct())
 
@@ -27,7 +27,6 @@ export default function createNewProductActions(product) {
             })
             
         } catch (error) {
-            console.log(error)
             dispatch(addProductError(true))
             // alerta de error.
             Swal.fire({
@@ -43,7 +42,7 @@ export default function createNewProductActions(product) {
 
 const addProduct = () => ({
     type: ADD_PRODUCT,
-    //payload:
+    payload: true
 })
 
 // Si el producto se guarda en db.

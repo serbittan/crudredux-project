@@ -3,7 +3,7 @@ import ItemProduct from './Item-product'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { getProductsActions } from '../actions/productAction'
+import { getProductsAction } from '../actions/productAction'
 
 
 const Products = () => {
@@ -11,17 +11,18 @@ const Products = () => {
     // Utilizar useDispatch para crear una function.
     const dispatch = useDispatch()
 
-    // Mandar llamar al actions del productActions. (esto podría añadirlo dentro del useEffect)
-    const getProducts = () => dispatch(getProductsActions())
-
     // Acceder al state del store.
     const products = useSelector(state => state.products.products)
     const error = useSelector(state => state.products.error)
     const charging = useSelector(state => state.products.loading)
 
     useEffect(() => {
-        getProducts()
+        // consultar la api.
+        const downloadProducts = () => dispatch(getProductsAction())
 
+        downloadProducts()
+
+        // eslint-disable-next-line
     }, [])
 
 
@@ -51,7 +52,9 @@ const Products = () => {
 
                 </tbody>
             </table>
-            { error && <p className="font-weight-bold alert alert-danger text-center">There was a mistake 😖</p>}
+            
+            { error && <p className="font-weight-bold alert alert-danger text-center mt-4" >There was a mistake <span role="img" aria-label="face">😖</span></p>} 
+
         </Fragment>
     )
 }

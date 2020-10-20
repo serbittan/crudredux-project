@@ -8,8 +8,8 @@ import { deleteProductDb } from '../../logic'
 
 import Swal from 'sweetalert2'
 
-
-const deleteProductActions = id => {
+// Selecciona y elimina el producto.
+const deleteProductAction = id => {
 
     return async(dispatch) => {
         dispatch(getDeleteProduct(id))
@@ -27,13 +27,12 @@ const deleteProductActions = id => {
             )
 
         } catch (error) {
-            console.log(error)
             dispatch(deleteProductError())
         }
     }
 }
 
-export default deleteProductActions
+export default deleteProductAction
 
 
 const getDeleteProduct = id => ({
@@ -45,7 +44,7 @@ const deleteProductSuccess = () => ({
     type: DELETE_PRODUCT_SUCCESS,
 })
 
-const deleteProductError = message => ({
+const deleteProductError = () => ({
     type: DELETE_PRODUCT_ERROR,
     payload: true
 })
